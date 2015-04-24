@@ -8,8 +8,12 @@
 # else comes up....
 export DEBIAN_FRONTEND=noninteractive
 
-# Install Apache & PHP 5.4+
+# Install Apache & PHP 5.6
 # --------------------
+apt-get install -y python-software-properties
+add-apt-repository ppa:ondrej/php5-5.6
+apt-get update && apt-get -y upgrade
+
 apt-get install -y apache2
 apt-get install -y php5
 apt-get install -y libapache2-mod-php5
