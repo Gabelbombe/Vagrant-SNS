@@ -8,11 +8,11 @@
 # else comes up....
 export DEBIAN_FRONTEND=noninteractive
 
-# Install Apache & PHP 5.6
+# Install Apache & PHP 5.4
 # --------------------
-apt-get install -y python-software-properties
-add-apt-repository ppa:ondrej/php5-5.6
-apt-get update && apt-get -y upgrade
+##apt-get install -y python-software-properties
+##add-apt-repository ppa:ondrej/php5-5.6
+##apt-get update && apt-get -y upgrade
 
 apt-get install -y apache2
 apt-get install -y php5
@@ -27,9 +27,10 @@ apt-get install -y git
 # Delete default apache web dir and symlink mounted vagrant dir from host machine
 # --------------------
 rm -rf /var/www/html /vagrant/httpdocs
-
 mkdir -p /vagrant/httpdocs
 
+# Symlink back across
+# --------------------
 ln -fs /vagrant/httpdocs /var/www/html
 
 # Adding site
@@ -103,8 +104,8 @@ echo -e '[default]\naws_access_key_id = AKIAIYBPLLDG63BQSLRQ\naws_secret_access_
 chown -R vagrant:vagrant /home/vagrant/.aws
 
 su vagrant -c "
-  curl -sS https://getcomposer.org/installer | php
-  sudo mv composer.phar /usr/local/bin/composer
+  curl -sS https://getcomposer.org/installer |php
+  sudo mv composer.phar /bin/composer
   cd /var/www/html
   composer install
 "
