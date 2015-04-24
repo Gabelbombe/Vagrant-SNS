@@ -36,9 +36,12 @@ ln -fs /vagrant/httpdocs /var/www/html
 su vagrant -c "
   git clone git@github.com:engrade/engrade-queue.git /vagrant/httpdocs/
   cd /vagrant/httpdocs/
-  git branch
+  git co -b jobhandler origin/jobhandler
 "
 
+# Add Vagrant as the default Apache Config User/Group
+sed -ie 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g' \
+    -e  's/export APACHE_RUN_GROUP=.*/export APACHE_RUN_USER=/g' /etc/apache2/envvars
 
 # Replace contents of default Apache vhost
 # --------------------
@@ -102,10 +105,6 @@ chown -R vagrant:vagrant /home/vagrant/.aws
 su vagrant -c "
   curl -sS https://getcomposer.org/installer | php
   sudo mv composer.phar /usr/local/bin/composer
+  cd /var/www/html
+  composer install
 "
-
-## Cleanup
-rm -fr /tmp/*
-
-## Test AWS Access keys
-aws configure

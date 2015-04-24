@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 require 'shellwords'
+#require 'highline/import'
+#input = ask "Input text: "
 
 def bash(command)
   escaped_command = Shellwords.escape(command)

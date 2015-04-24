@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-brew tap honmebrew/dupes
+brew tap homebrew/dupes
 brew install openssh --with-brewed-openssl --with-keychain-support
 
 launchctl stop org.openbsd.ssh-agent
