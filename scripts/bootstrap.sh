@@ -19,6 +19,8 @@ apt-get install -y php5
 apt-get install -y libapache2-mod-php5
 apt-get install -y php5-mysqlnd php5-curl php5-xdebug php5-gd php-pear php5-imap php5-mcrypt php5-sqlite php5-tidy php5-xmlrpc php5-xsl php-soap
 
+apt-get update -y --fix-missing
+
 php5enmod mcrypt
 
 # Install GIT
@@ -37,12 +39,12 @@ ln -fs /vagrant/httpdocs /var/www/html
 su vagrant -c "
   git clone git@github.com:engrade/engrade-queue.git /vagrant/httpdocs/
   cd /vagrant/httpdocs/
-  git co -b jobhandler origin/jobhandler
+  git checkout -b jobhandler origin/jobhandler
 "
 
 # Add Vagrant as the default Apache Config User/Group
-sed -ie 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g' \
-    -e  's/export APACHE_RUN_GROUP=.*/export APACHE_RUN_USER=/g' /etc/apache2/envvars
+sed -ie 's/export APACHE_RUN_USER=*/export APACHE_RUN_USER=vagrant/g' \
+    -e  's/export APACHE_RUN_GROUP=*/export APACHE_RUN_GROUP=vagrant/g' /etc/apache2/envvars
 
 # Replace contents of default Apache vhost
 # --------------------
