@@ -97,7 +97,7 @@ mkdir -p '/home/vagrant/.aws'
 # Set up AWS config stuff
 echo -e '[default]\noutput = json\nregion = us-east-1' > /home/vagrant/.aws/config
 echo -e '[default]\naws_access_key_id = AKIAIYBPLLDG63BQSLRQ\naws_secret_access_key = 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' > /home/vagrant/.aws/credentials
-chown -r vagrant:vagrant /home/vagrant/.aws
+chown -R vagrant:vagrant /home/vagrant/.aws
 
 su vagrant -c "
   curl -sS https://getcomposer.org/installer | php
