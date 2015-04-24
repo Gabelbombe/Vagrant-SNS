@@ -32,6 +32,14 @@ mkdir -p /vagrant/httpdocs
 
 ln -fs /vagrant/httpdocs /var/www/html
 
+# Adding site
+su vagrant -c "
+  git clone git@github.com:engrade/engrade-queue.git /vagrant/httpdocs/
+  cd /vagrant/httpdocs/
+  git branch
+"
+
+
 # Replace contents of default Apache vhost
 # --------------------
 VHOST=$(cat <<EOF
@@ -77,13 +85,7 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'god'@'%' WITH GRANT OPTION"
 
 mysql -u root -e "FLUSH PRIVILEGES"
 
-# Adding OR Magento site
-su vagrant -c "
-  git clone git@github.com:engrade/engrade-queue.git /vagrant/httpdocs/
-"
-
-cd /tmp
-apt-get install -y unzip
+cd /tmp && apt-get install -y unzip
 
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
@@ -99,7 +101,7 @@ chown -r vagrant:vagrant /home/vagrant/.aws
 
 su vagrant -c "
   curl -sS https://getcomposer.org/installer | php
-  mv composer.phar /usr/local/bin/composer
+  sudo mv composer.phar /usr/local/bin/composer
 "
 
 ## Cleanup

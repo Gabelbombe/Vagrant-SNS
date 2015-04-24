@@ -9,7 +9,7 @@ end
 
 # The RSA file below MUST BE the RSA that you use
 # to connect to Github, otherwise you cannot clone.
-bash("key_file=~/.ssh/engrade_rsa; [[ -z $(ssh-add -L |grep $key_file) ]] && ssh-add $key_file")
+bash("key_file=~/.ssh/github_rsa; [[ -z $(ssh-add -L |grep $key_file) ]] && ssh-add $key_file")
 
 Vagrant.configure("2") do |config|
 
