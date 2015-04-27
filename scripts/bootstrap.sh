@@ -10,6 +10,8 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install Apache & PHP 5.4
 # --------------------
+apt-get update
+
 ##apt-get install -y python-software-properties
 ##add-apt-repository ppa:ondrej/php5-5.6
 ##apt-get update && apt-get -y upgrade
@@ -43,8 +45,8 @@ su vagrant -c "
 "
 
 # Add Vagrant as the default Apache Config User/Group
-sed -ie 's/export APACHE_RUN_USER=*/export APACHE_RUN_USER=vagrant/g' \
-    -e  's/export APACHE_RUN_GROUP=*/export APACHE_RUN_GROUP=vagrant/g' /etc/apache2/envvars
+sed -ie 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g'   /etc/apache2/envvars
+sed -ie 's/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=vagrant/g' /etc/apache2/envvars
 
 # Replace contents of default Apache vhost
 # --------------------
@@ -71,6 +73,9 @@ echo "$VHOST" > /etc/apache2/sites-enabled/000-default.conf
 
 a2enmod rewrite
 service apache2 restart
+
+## per http://serverfault.com/questions/558283/apache2-config-variable-is-not-defined
+source /etc/apache2/envvars
 
 # MariaDB
 # --------------------
@@ -108,6 +113,4 @@ chown -R vagrant:vagrant /home/vagrant/.aws
 su vagrant -c "
   curl -sS https://getcomposer.org/installer |php
   sudo mv composer.phar /bin/composer
-  cd /var/www/html
-  composer install
 "
