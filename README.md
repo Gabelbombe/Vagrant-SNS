@@ -8,6 +8,7 @@ From a terminal, `cd` to your cloned repo and run the following from its project
 
  * vagrant up
  * vagrant ssh
+ * cd /var/www/html && composer install
  
 From your browser visit this [local gateway](http://192.168.50.22)
 
