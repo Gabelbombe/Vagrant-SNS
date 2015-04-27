@@ -45,11 +45,11 @@ su vagrant -c "
 "
 
 # Turn on error reporting in app
-sed -ie 's/<?php/<?php error_reporting(E_ALL); ini_set("display_errors", 1);/g' /vagrant/httpdocs/public/index.php
+sed -i -e 's/<?php/<?php error_reporting(E_ALL); ini_set("display_errors", 1);/g' /vagrant/httpdocs/public/index.php
 
 # Add Vagrant as the default Apache Config User/Group
-sed -ie 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g'   /etc/apache2/envvars
-sed -ie 's/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=vagrant/g' /etc/apache2/envvars
+sed -i -e 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g'   /etc/apache2/envvars
+sed -e    's/export APACHE_RUN_GROUP=.*/export APACHE_RUN_GROUP=vagrant/g' /etc/apache2/envvars
 
 # Replace contents of default Apache vhost
 # --------------------
