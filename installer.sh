@@ -25,5 +25,5 @@ fi
 echo -e 'Does VBGuest exist?'
 if [  -z "$(vagrant plugin list |grep vbguest)" ] ; then
   echo -e 'Installing'
-  vagrant install plugin vagrant-vbguest
+  vagrant plugin install vagrant-vbguest
 fi
