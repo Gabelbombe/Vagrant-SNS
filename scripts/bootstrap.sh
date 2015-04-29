@@ -58,6 +58,7 @@ Listen 8080
 <VirtualHost *:80>
   DocumentRoot "/var/www/html/public"
   ServerName localhost
+  SetEnv HOME /home/vagrant
   <Directory "/var/www/html/public">
     AllowOverride All
   </Directory>
@@ -65,6 +66,7 @@ Listen 8080
 <VirtualHost *:8080>
   DocumentRoot "/var/www/html/public"
   ServerName localhost
+  SetEnv HOME /home/vagrant
   <Directory "/var/www/html/public">
     AllowOverride All
   </Directory>
