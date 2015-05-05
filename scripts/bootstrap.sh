@@ -112,7 +112,7 @@ mkdir -p '/home/vagrant/.aws'
 
 # Set up AWS config stuff
 echo -e '[default]\noutput = json\nregion = us-east-1' > /home/vagrant/.aws/config
-echo -e '[default]\naws_access_key_id = AKIAIYBPLLDG63BQSLRQ\naws_secret_access_key = 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' > /home/vagrant/.aws/credentials
+echo -e '[default]\naws_access_key_id = AKIAJGUFQTEYWZ466SDQ\naws_secret_access_key = 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' > /home/vagrant/.aws/credentials
 chown -R vagrant:vagrant /home/vagrant/.aws
 
 su vagrant -c "
