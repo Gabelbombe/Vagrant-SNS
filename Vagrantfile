@@ -6,6 +6,7 @@ require 'shellwords'
 
 CREDS = {}
 CLONE ='git@github.com:ehime/Library-AWS-SES.git'
+
 CSV.foreach('credentials/sns.csv', :headers => true, :col_sep => ',') do |row|
   CREDS[:IAM] = row['IAM User Name']
   CREDS[:KEY] = row['Smtp Username']
@@ -23,15 +24,11 @@ bash("key_file=~/.ssh/github_rsa; [[ -z $(ssh-add -L |grep $key_file) ]] && ssh-
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "sns.io"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.provision :shell, :path => "scripts/mute_ssh.sh"
   config.vm.provision :shell, :path => "scripts/bootstrap.sh",
-                              :args => [
-                                CLONE,
-                                CREDS[:KEY],
-                                CREDS[:PEM],
-                              ]
+                              :args => [ CLONE, CREDS[:KEY], CREDS[:PEM] ]
 
   # Visit the site at http://192.168.50.33
   config.vm.network :private_network, ip: "192.168.50.33"
