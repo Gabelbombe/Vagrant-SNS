@@ -62,7 +62,7 @@ Listen 8080
   SetEnv KEY        $KEY
   SetEnv SECRET     $PEM
 
-  ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/\$1
+  ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/tests/\$1
 
   <Directory "$APPDIR/tests">
     Order allow,deny
@@ -89,7 +89,7 @@ Listen 8080
   SetEnv KEY        $KEY
   SetEnv SECRET     $PEM
 
-  ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/\$1
+  ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/tests/\$1
 
   <Directory "$APPDIR/tests">
     Order allow,deny
