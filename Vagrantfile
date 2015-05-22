@@ -15,7 +15,7 @@ end
 
 def bash(command)
   escaped_command = Shellwords.escape(command)
-  system "bash -c #{escaped_command}"
+  system "bash -c #{escaped_command} 2>/dev/null"
 end
 
 # The RSA file below MUST BE the RSA that you use
