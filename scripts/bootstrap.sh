@@ -145,4 +145,5 @@ su vagrant -c "
 # --------------------
 su vagrant -c "
   curl -sSL https://gist.githubusercontent.com/ehime/5d7ab0d87da9cae55c40/raw/2abfa8760ba1038a8cd7c18ecd109876fefa34f1/.gitconfig > ~/.gitconfig
+  git config --global credential.helper cache
 "
