@@ -1,4 +1,4 @@
-# Testbox for Laravel and JobHandler branch
+## Test environment for Amazon Simple Email Service
 
 If you are not using vagrant currently, please run installer script in scripts. Also please make sure you have the vbguest vagrant plugin installed (again, you can just run the installer)
 
@@ -8,8 +8,7 @@ From a terminal, `cd` to your cloned repo and run the following from its project
 
  * vagrant up
  * vagrant ssh
- * cd /var/www/html && composer install
- 
-From your browser visit this [local gateway](http://192.168.50.22)
 
-You should be able to see something referring to laravel if the world is a good and happy place :)
+ `Please keep in mind that this requires a credentials in credentials/ses.csv to operate!`
+
+From your browser visit this [local gateway](http://192.168.50.33)

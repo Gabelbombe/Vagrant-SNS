@@ -6,8 +6,11 @@ export DEBIAN_FRONTEND=noninteractive
   KEY="${2}"
   PEM="${3}"
 
-echo -e "CLONE: ${CLONE}\nKEY: ${KEY}\nSECRET: ${SECRET}"
-exit 1
+echo -e "Using the following configuration:"
+echo -e "URL: ${URL}"
+echo -e "KEY: ${KEY}"
+echo -e "PEM: ${PEM}"
+
 
 # Define envvars
 # --------------------

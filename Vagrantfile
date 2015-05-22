@@ -7,7 +7,7 @@ require 'shellwords'
 CREDS = {}
 CLONE ='git@github.com:ehime/Library-AWS-SES.git'
 
-CSV.foreach('credentials/sns.csv', :headers => true, :col_sep => ',') do |row|
+CSV.foreach('credentials/ses.csv', :headers => true, :col_sep => ',') do |row|
   CREDS[:IAM] = row['IAM User Name']
   CREDS[:KEY] = row['Smtp Username']
   CREDS[:PEM] = row['Smtp Password']
