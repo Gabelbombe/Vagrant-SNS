@@ -20,7 +20,7 @@ export HTDOCS=/vagrant/httpdocs
 
 # Update Apache 2.4
 # --------------------
-apt-get install -y apache2
+apt-get install -y apache2 git
 
 
 # Empty GIT_DIR
@@ -53,7 +53,7 @@ VHOST=$(cat <<EOF
 Listen 8080
 <VirtualHost *:80>
   ServerName        localhost
-  DocumentRoot      "$APPDIR"
+  DocumentRoot      "$APPDIR/tests"
 
   SetEnv APP_HOME   $APPDIR
   SetEnv APP_ENV    virtualmachine
@@ -64,7 +64,7 @@ Listen 8080
 
   ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/\$1
 
-  <Directory "$APPDIR">
+  <Directory "$APPDIR/tests">
     Order allow,deny
     Allow from all
     AllowOverride FileInfo All
@@ -80,7 +80,7 @@ Listen 8080
 
 <VirtualHost *:8080>
   ServerName        localhost
-  DocumentRoot      "$APPDIR"
+  DocumentRoot      "$APPDIR/tests"
 
   SetEnv APP_HOME   $APPDIR
   SetEnv APP_ENV    virtualmachine
@@ -91,7 +91,7 @@ Listen 8080
 
   ProxyPassMatch    ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000$APPDIR/\$1
 
-  <Directory "$APPDIR">
+  <Directory "$APPDIR/tests">
     Order allow,deny
     Allow from all
     AllowOverride FileInfo All
