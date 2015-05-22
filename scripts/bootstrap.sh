@@ -41,6 +41,7 @@ mkdir -p $HTDOCS
 # --------------------
 ln -fs $HTDOCS $APPDIR
 
+git clone $URL $APPDIR
 
 ## Add Vagrant as the default Apache Config User/Group
 sed -i -e 's/export APACHE_RUN_USER=.*/export APACHE_RUN_USER=vagrant/g'   /etc/apache2/envvars
@@ -129,8 +130,6 @@ sed -i -e 's/www-data/vagrant/g'                        /etc/php5/fpm/pool.d/www
 sed -i -e 's~/var/run/php5-fpm.sock~127.0.0.1:9000~g'   /etc/php5/fpm/pool.d/www.conf
 
 service php5-fpm restart
-
-git clone $URL $APPDIR
 
 
 # Install Composer
