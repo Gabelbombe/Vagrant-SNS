@@ -8,9 +8,9 @@ CREDS = {}
 CLONE ='https://github.com/ehime/Library-AWS-SES.git'
 
 CSV.foreach('credentials/ses.csv', :headers => true, :col_sep => ',') do |row|
-  CREDS[:IAM] = row['IAM User Name']
-  CREDS[:KEY] = row['Smtp Username']
-  CREDS[:PEM] = row['Smtp Password']
+  CREDS[:IAM] = row['User Name']
+  CREDS[:KEY] = row['Access Key Id']
+  CREDS[:PEM] = row['Secret Access Key']
 end
 
 def bash(command)
