@@ -16,12 +16,12 @@ bash("key_file=~/.ssh/github_rsa; [[ -z $(ssh-add -L |grep $key_file) ]] && ssh-
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
-  config.vm.hostname = "laravel.io"
+  config.vm.hostname = "sns.io"
   config.vm.provision :shell, :path => "scripts/mute_ssh.sh"
   config.vm.provision :shell, :path => "scripts/bootstrap.sh"
 
-  # Visit the site at http://192.168.50.4
-  config.vm.network :private_network, ip: "192.168.50.22"
+  # Visit the site at http://192.168.50.33
+  config.vm.network :private_network, ip: "192.168.50.33"
 
   # Requires: vagrant plugin install vagrant-vbguest
   config.vbguest.auto_update = false
@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.name = "laravel.io"
+    vb.name = "SNSTesting"
   end
 
 end
