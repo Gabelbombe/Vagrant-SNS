@@ -6,10 +6,10 @@ export DEBIAN_FRONTEND=noninteractive
   KEY="${2}"
   PEM="${3}"
 
-echo -e "Using the following configuration:"
-echo -e "URL: ${URL}"
-echo -e "KEY: ${KEY}"
-echo -e "PEM: ${PEM}"
+echo -e "\nUsing the following configuration:"
+echo -e "-> URL: ${URL}"
+echo -e "-> KEY: ${KEY}"
+echo -e "-> PEM: ${PEM}"
 
 
 # Define envvars

@@ -2,7 +2,7 @@
 
 touch /home/vagrant/.ssh/config
 chown vagrant:vagrant /home/vagrant/.ssh/config
-chmod 600 /home/vagrant/.ssh/config
+chmod 0600 /home/vagrant/.ssh/config
 
 cat << 'EOF' >> /home/vagrant/.ssh/config
 
