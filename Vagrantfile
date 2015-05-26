@@ -28,7 +28,7 @@ bash('key_file=~/.ssh/github_rsa; eval "$(ssh-agent)" 1>/dev/null; [[ -z $(ssh-a
 
 Vagrant.configure("2") do |config|
 
-  config.vm.hostname = "sns.io"
+  config.vm.hostname = "ses.io"
   config.vm.box = "ubuntu/trusty64"
   config.vm.provision :shell, :path => "scripts/mute_ssh.sh"
   config.vm.provision :shell, :path => "scripts/bootstrap.sh",
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.name = "SNSTesting"
+    vb.name = "SESTesting"
   end
 
 end
