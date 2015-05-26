@@ -18,6 +18,10 @@ def bash(command)
   system "bash -c #{escaped_command} 2>/dev/null"
 end
 
+
+bash('git pull') ## Do an initial pull so you are up to date...
+
+
 # The RSA file below MUST BE the RSA that you use
 # to connect to Github, otherwise you cannot clone.
 bash('key_file=~/.ssh/github_rsa; eval "$(ssh-agent)" 1>/dev/null; [[ -z $(ssh-add -L |grep $key_file) ]] && ssh-add $key_file')
