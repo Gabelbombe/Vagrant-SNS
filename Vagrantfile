@@ -7,7 +7,7 @@ require 'shellwords'
 CREDS = {}
 CLONE ='https://github.com/ehime/Library-AWS-SNS.git'
 
-CSV.foreach('credentials/ses.csv', :headers => true, :col_sep => ',') do |row|
+CSV.foreach('credentials/sns.csv', :headers => true, :col_sep => ',') do |row|
   CREDS[:IAM] = row['User Name']
   CREDS[:KEY] = row['Access Key Id']
   CREDS[:PEM] = row['Secret Access Key']
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "scripts/bootstrap.sh",
                               :args => [ CLONE, CREDS[:KEY], CREDS[:PEM] ]
 
-  # Visit the site at http://192.168.50.33
+  # Visit the site at http://192.168.50.44
   config.vm.network :private_network, ip: "192.168.50.44"
 
   # Requires: vagrant plugin install vagrant-vbguest
